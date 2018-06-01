@@ -7,7 +7,7 @@ import { editCurriculum,removeCurriculum } from '../actions/curricula'
 const EditCurriculumPage = (props) => {
   return (
     <div>
-      <h1>Edit curriculum with id of {props.curriculum.id}</h1>
+      <h1>Edit curriculum with id: {props.curriculum.id}</h1>
       <CurriculumForm 
         curriculum={props.curriculum}
         onSubmit={(curriculum) => {
@@ -15,7 +15,7 @@ const EditCurriculumPage = (props) => {
           props.history.push('/');
         }}    
       />
-      <button onClick={() => {
+      <button className="button button--secondary" onClick={() => {
           props.dispatch(removeCurriculum({ id:props.curriculum.id }));
           props.history.push('/');
           }

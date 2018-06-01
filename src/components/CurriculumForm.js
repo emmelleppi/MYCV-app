@@ -116,110 +116,135 @@ export default class CurriculumForm extends React.Component {
         return (
             <div>
                 {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.onSubmit} >
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Name',
-                            value:this.state.name
-                        }}
-                        onInputChange={this.onNameChange}
-                        textError='The name is required'
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Surame',
-                            value:this.state.surname
-                        }}
-                        onInputChange={this.onSurnameChange}
-                        textError='The surname is required'
-                    />
-                    <ReactDatez 
-                        allowPast={true}
-                        value={this.state.birthDate}
-                        handleChange={this.onBirthDateChange}
-                        dateFormat='DD/MM/YYYY'
-                        placeholder='Birth date'
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'City',
-                            value:this.state.city
-                        }}
-                        onInputChange={this.onCityChange}
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Province',
-                            value:this.state.province,
-                            maxLength:2
-                        }}
-                        onInputChange={this.onProvinceChange}
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Country',
-                            value:this.state.country
-                        }}
-                        onInputChange={this.onCountryChange}
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Street',
-                            value:this.state.street
-                        }}
-                        onInputChange={this.onStreetChange}
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Street number',
-                            value:this.state.streetNumber
-                        }}
-                        onInputChange={this.onStreetNumberChange}
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{
-                            type:'text',
-                            placeholder:'Cellphone number',
-                            value:this.state.cellphoneNumber
-                        }}
-                        onInputChange={this.onCellphoneNumberChange}
-                        textError='The phone number is not valid'
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{                        
-                            type:'text',
-                            placeholder:'Landline phone',
-                            value:this.state.landlinePhone
-                        }}
-                        onInputChange={this.onLandlinePhoneChange}
-                        textError='The phone number is not valid'
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{                        
-                            type:'text',
-                            placeholder:'First email',
-                            value:this.state.firstEmail
-                        }}
-                        onInputChange={this.onFirstEmailChange}
-                        textError='The email is not valid'
-                    />
-                    <CurriculumFormInput 
-                        inputAttr={{                        
-                            type:'text',
-                            placeholder:'Second email',
-                            value:this.state.secondEmail
-                        }}
-                        onInputChange={this.onSecondEmailChange}
-                        textError='The email is not valid'
-                    />
-                    <button>Add curriculum</button>
+                <form onSubmit={this.onSubmit} className="form">
+                    <div className="form__pairs" >
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Name',
+                                className:'text-input',
+                                value:this.state.name
+                            }}
+                            onInputChange={this.onNameChange}
+                            textError='The name is required'
+                        />
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Surname',
+                                className:'text-input',
+                                value:this.state.surname
+                            }}
+                            onInputChange={this.onSurnameChange}
+                            textError='The surname is required'
+                        />
+                    </div>
+                    <div className="form__pairs" >
+                        <ReactDatez 
+                            allowPast={true}
+                            value={this.state.birthDate}
+                            handleChange={this.onBirthDateChange}
+                            dateFormat='DD/MM/YYYY'
+                            placeholder='Birth date'
+                        />
+                    </div>
+                    <div className="form__pairs" >
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'City',
+                                className:'text-input',
+                                value:this.state.city
+                            }}
+                            onInputChange={this.onCityChange}
+                        />
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Province',
+                                className:'text-input',
+                                value:this.state.province,
+                                maxLength:2
+                            }}
+                            onInputChange={this.onProvinceChange}
+                        />
+                    </div>
+                    <div className="form__pairs" >
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Country',
+                                className:'text-input',
+                                value:this.state.country
+                            }}
+                            onInputChange={this.onCountryChange}
+                        />
+                    </div>
+                    <div className="form__pairs" >
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Street',
+                                className:'text-input',
+                                value:this.state.street
+                            }}
+                            onInputChange={this.onStreetChange}
+                        />
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Street number',
+                                className:'text-input',
+                                value:this.state.streetNumber
+                            }}
+                            onInputChange={this.onStreetNumberChange}
+                        />
+                    </div>
+                    <div className="form__pairs" >
+                        <CurriculumFormInput 
+                            inputAttr={{
+                                type:'text',
+                                placeholder:'Cellphone number',
+                                className:'text-input',
+                                value:this.state.cellphoneNumber
+                            }}
+                            onInputChange={this.onCellphoneNumberChange}
+                            textError='The phone number is not valid'
+                        />
+                        <CurriculumFormInput 
+                            inputAttr={{                        
+                                type:'text',
+                                placeholder:'Landline phone',
+                                className:'text-input',
+                                value:this.state.landlinePhone
+                            }}
+                            onInputChange={this.onLandlinePhoneChange}
+                            textError='The phone number is not valid'
+                        />
+                    </div>
+                    <div className="form__pairs" >
+                        <CurriculumFormInput 
+                            inputAttr={{                        
+                                type:'text',
+                                placeholder:'First email',
+                                className:'text-input',
+                                value:this.state.firstEmail
+                            }}
+                            onInputChange={this.onFirstEmailChange}
+                            textError='The email is not valid'
+                        />
+                        <CurriculumFormInput 
+                            inputAttr={{                        
+                                type:'text',
+                                placeholder:'Second email',
+                                className:'text-input',
+                                value:this.state.secondEmail
+                            }}
+                            onInputChange={this.onSecondEmailChange}
+                            textError='The email is not valid'
+                        />
+                    </div>
+                    <button className="button button--action">Add curriculum</button>
                 </form>
             </div>
         );

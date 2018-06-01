@@ -1,0 +1,29 @@
+// Button
+.button {
+  background: none;
+  border: none;
+  color: $off-white;
+  display: flex;
+  text-align: center;
+  font-size: $l-size;
+  font-weight: 300;
+  line-height: 1;
+  text-decoration: none;
+  @media (max-width: $desktop-breakpoint) {
+    margin-top: $s-size;
+    display: inline-block;
+  }
+}
+
+.button--action {
+  &:hover {
+    color: $light-blue
+  }
+}
+
+
+.button--secondary {
+  &:hover {
+    color:  rgb(206, 44, 44);
+  }
+}

@@ -1,0 +1,44 @@
+.list-header {
+  color: $off-white;
+  text-align: center;
+  @media (min-width: $desktop-breakpoint) {
+    text-align: left;
+  }
+}
+
+.list-item {
+  color: $off-black;
+  display: flex;
+  flex-direction: column;
+  padding: $s-size;
+  text-decoration: none;
+  &:hover {
+    background: $off-white;
+  }
+  @media (min-width: $desktop-breakpoint) {
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $m-size;
+  }
+}
+
+.list-item--message {
+  align-items: center;
+  color: $off-black;
+  justify-content: center;
+  padding: $s-size;
+  &:hover {
+    background: none;
+  }
+}
+
+.list-item--create {
+  @extend .list-item--message;
+  text-decoration: none;
+  font-weight: bold;
+  &:hover {
+    color: $off-white;
+  }
+}
+

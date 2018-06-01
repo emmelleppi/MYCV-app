@@ -5,13 +5,19 @@ import { addCurriculum } from '../actions/curricula'
 
 const AddCurriculumPage = (props) => (
   <div>
-    <h1>Add curriculum</h1>
-    <CurriculumForm 
-      onSubmit={(curriculum) => {
-        props.dispatch(addCurriculum(curriculum));
-        props.history.push('/');
-      }}
-    /> 
+    <div className="header-container">
+      <div className="container">
+        <h1 className="header__title">New curriculum</h1>
+      </div>
+    </div>
+    <div className="container">
+      <CurriculumForm 
+        onSubmit={(curriculum) => {
+          props.dispatch(addCurriculum(curriculum));
+          props.history.push('/');
+        }}
+      /> 
+    </div>
   </div>
 );
 

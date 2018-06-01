@@ -11,15 +11,17 @@ const AppRouter = () => (
   <BrowserRouter>
     <div>
       <Header />
-      <Switch>
-        <Route path="/" component={CurriculaDashboardPage} exact={true} />
-        <Route path="/create" component={AddCurriculumPage} />
-        <Route path="/edit/:id" component={EditCurriculumPage} />
-        <Route path="/help" component={HelpPage} />
-        <Route component={NotFoundPage} />
-      </Switch>
+      <div className="container">
+        <Switch>
+          <Route path="/" component={CurriculaDashboardPage} exact={true} />
+          <Route path="/create" component={AddCurriculumPage} />
+          <Route path="/edit/:id" component={EditCurriculumPage} />
+          <Route path="/help" component={HelpPage} />
+          <Route component={NotFoundPage} />
+        </Switch>
+      </div>
     </div>
-  </BrowserRouter>
+    </BrowserRouter>
 );
 
 export default AppRouter;

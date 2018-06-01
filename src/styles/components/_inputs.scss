@@ -1,0 +1,19 @@
+.text-input {
+  border: 1px solid #cacccd;
+  height: 30px;
+  background: $off-white;
+  color: $off-black;
+  font-size: $m-size;
+  font-weight: 300;
+  padding: $s-size;
+}
+
+.rdatez > input {
+  @extend .text-input;
+  cursor: pointer;
+}
+
+.select {
+  @extend .text-input;
+  margin-left: $s-size;
+}

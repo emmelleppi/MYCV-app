@@ -5,15 +5,19 @@ import CurriculumListItem from './CurriculumListItem';
 import selectCurricula from '../selectors/curricula'
 
 const CurriculumList = (props) => (
-    <div>
-        <h1>Curriculum List</h1>
+    <div className="content">
+        <div className="list-header">    
+            <h1>Curriculum List</h1>
+        </div>
         {
             props.curricula.length>0 ? 
             props.curricula.map((curriculum) => {
                 return <CurriculumListItem key={curriculum.id}  {...curriculum} />;
             }) 
             :
-            <div>No curriculum available. <Link to="/create">Create one.</Link></div>
+            <div className="list-item list-item--message">
+                No curriculum available, <Link className="list-item--create" to="/create">create one.</Link>
+            </div>
         }
     </div>
 );
