@@ -7,7 +7,7 @@ import 'react-dates/lib/css/_datepicker.css';
 import 'react-datez/dist/css/react-datez.css';
 
 
-export default class CurriculumForm extends React.Component {
+class CurriculumForm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -249,3 +249,5 @@ export default class CurriculumForm extends React.Component {
         );
     }
 }
+
+export default CurriculumForm

@@ -1,6 +1,6 @@
 const curriculaReducerDefaultState = []
 
-export default (state = curriculaReducerDefaultState, action) => {
+export default function curriculaReducer (state = curriculaReducerDefaultState, action) {
   switch (action.type) {
     case 'ADD_CURRICULUM':
       return [...state, action.curriculum]

@@ -21,7 +21,7 @@ const CurriculumList = (props) => (
   </div>
 )
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
   return {
     curricula: selectCurricula(state.curricula, state.filters)
   }

@@ -2,9 +2,7 @@ import {createStore, combineReducers} from 'redux'
 import curriculaReducer from '../reducers/curricula'
 import filtersReducer from '../reducers/filters'
 
-// Creazione dello store per Redux combinando i riduttori dei curricula e dei filtri
-// Configurazione per compatibilità con il Redux Devtools
-export default () => {
+export default function configureStore () {
   const store = createStore(combineReducers({
     curricula: curriculaReducer,
     filters: filtersReducer

@@ -1,6 +1,6 @@
 import moment from 'moment'
 
-export default (curricula, { name, surname, sortBy, startBirthDate, endBirthDate }) => {
+export default function selectCurricula (curricula, { name, surname, sortBy, startBirthDate, endBirthDate }) {
   return curricula.filter((curriculum) => {
     const birthDate = moment(curriculum.birthDate)
     const startBirthDateMoment = startBirthDate && moment(startBirthDate)

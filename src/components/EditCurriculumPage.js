@@ -23,7 +23,7 @@ const EditCurriculumPage = (props) => {
   )
 }
 
-const mapStateToProps = (state, props) => {
+function mapStateToProps (state, props) {
   return {
     curriculum: state.curricula.find((curriculum) => curriculum.id === props.match.params.id)
   }

@@ -81,7 +81,7 @@ class CurriculumListFilters extends React.Component{
     };
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state){
     return {
         filters: state.filters
     }
