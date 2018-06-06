@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Modal from 'react-modal';
 import CurriculumForm from './CurriculumForm';
 import { editCurriculum,removeCurriculum } from '../actions/curricula'
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { setNameFilter, setSurnameFilter, sortByName, sortBySurname, sortByBirthDate, setStartBirthDate, setEndBirthDate } from '../actions/filters';
-import { DateRangePicker } from 'react-dates';
 import { ReactDatez, ReduxReactDatez } from 'react-datez';
 import 'react-datez/dist/css/react-datez.css';
 

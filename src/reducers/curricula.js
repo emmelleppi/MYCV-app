@@ -1,4 +1,3 @@
-// Stato iniziale dei curricula vuoto
 const curriculaReducerDefaultState = [];
 
 export default (state = curriculaReducerDefaultState, action) => {

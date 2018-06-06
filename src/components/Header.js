@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-// Componente Header per la navigazione all'interno dell'app basato su React-Router
 const Header = () => (
   <div className="header">
     <div className="container">

@@ -1,6 +1,5 @@
 import React from 'react';
 import moment from 'moment';
-import { SingleDatePicker } from 'react-dates';
 import { ReactDatez, ReduxReactDatez } from 'react-datez';
 import { toTitleCase, isPhoneNumber, isEmail } from '../utils/stringUtils';
 import CurriculumFormInput from './CurriculumFormInput';
