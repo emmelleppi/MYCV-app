@@ -1,65 +1,56 @@
-import moment from 'moment';
-
 const filtersReducerDefaultState = {
-    name: '', 
-    surname: '', 
-    sortBy: 'name', 
-    startBirthDate: '', 
-    endBirthDate: ''
-};
+  name: '',
+  surname: '',
+  sortBy: 'name',
+  startBirthDate: '',
+  endBirthDate: ''
+}
 
 export default (state = filtersReducerDefaultState, action) => {
-    switch (action.type) {
-        case 'SET_NAME_FILTER':
-            return {
-                ...state,
-                name: action.name
-            }
-        break;
+  switch (action.type) {
+    case 'SET_NAME_FILTER':
+      return {
+        ...state,
+        name: action.name
+      }
 
-        case 'SET_SURNAME_FILTER':
-            return {
-                ...state,
-                surname: action.surname
-            }
-        break;
+    case 'SET_SURNAME_FILTER':
+      return {
+        ...state,
+        surname: action.surname
+      }
 
-        case 'SORT_BY_NAME':
-            return {
-                ...state,
-                sortBy: 'name'
-            }
-        break;
+    case 'SORT_BY_NAME':
+      return {
+        ...state,
+        sortBy: 'name'
+      }
 
-        case 'SORT_BY_SURNAME':
-            return {
-                ...state,
-                sortBy: 'surname'
-            }
-        break;
+    case 'SORT_BY_SURNAME':
+      return {
+        ...state,
+        sortBy: 'surname'
+      }
 
-        case 'SORT_BY_BIRTHDATE':
-            return {
-                ...state,
-                sortBy: 'birthDate'
-            }
-        break;
-        
-        case 'SET_START_BIRTHDATE':
-            return {
-                ...state,
-                startBirthDate: action.startBirthDate
-            }
-        break;
+    case 'SORT_BY_BIRTHDATE':
+      return {
+        ...state,
+        sortBy: 'birthDate'
+      }
 
-        case 'SET_END_BIRTHDATE':
-            return {
-                ...state,
-                endBirthDate: action.endBirthDate
-            }
-        break;
-    
-        default:
-        return state;
-    }
-};
+    case 'SET_START_BIRTHDATE':
+      return {
+        ...state,
+        startBirthDate: action.startBirthDate
+      }
+
+    case 'SET_END_BIRTHDATE':
+      return {
+        ...state,
+        endBirthDate: action.endBirthDate
+      }
+
+    default:
+      return state
+  }
+}

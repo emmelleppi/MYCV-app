@@ -1,28 +1,28 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import moment from 'moment';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import moment from 'moment'
 
-const CurriculumListItem = ({ 
-        id,
-        name,
-        surname,
-        birthDate,
-        city,
-        province,
-        country,
-        street,
-        streetNumber,
-        cellphoneNumber,
-        landlinePhone,
-        firstEmail,
-        secondEmail
-    }) => (
-        <div>
-            <Link to={'/edit/'+id} >
-                <h3>{name} {surname}</h3>
-            </Link>
-            <p>{moment(birthDate).format('Do MMMM YYYY')}</p>
-        </div>
-);
+const CurriculumListItem = ({
+  id,
+  name,
+  surname,
+  birthDate,
+  city,
+  province,
+  country,
+  street,
+  streetNumber,
+  cellphoneNumber,
+  landlinePhone,
+  firstEmail,
+  secondEmail
+}) => (
+  <div>
+    <Link to={'/edit/' + id} >
+      <h3>{name} {surname}</h3>
+    </Link>
+    <p>{moment(birthDate).format('Do MMMM YYYY')}</p>
+  </div>
+)
 
-export default CurriculumListItem;
+export default CurriculumListItem
