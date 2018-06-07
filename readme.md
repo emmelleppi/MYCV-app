@@ -12,4 +12,5 @@ Currently it is possible to insert and modify only the personal data. Subsequent
 ## Build the project
 
 `yarn build:dev` for the dev build (with inline source maps)
+
 `yarn build:prod` for the production build (without inline source maps)
