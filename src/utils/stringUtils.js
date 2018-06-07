@@ -1,4 +1,3 @@
-// Funzione che effettua il capitalize di tutte le parole dentro a una stringa
 export function toTitleCase (title) {
   return title
     .split(/ /g)

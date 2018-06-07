@@ -1,24 +1,25 @@
-import React from 'react';
+import React from 'react'
 
 class CurriculumFormInput extends React.Component{
     state = {
-        visibleError: false 
-    };
+        isVisibleError: false 
+    }
     onInputChange = (e) => {
-        const visibleError = !!this.props.onInputChange(e);
-        this.setState(() => ({ visibleError }));
-    };
+        const isVisibleError = !!this.props.onInputChange(e)
+        this.setState(() => ({ isVisibleError }))
+    }
     render(){
-       return (
+        const {inputAttr,textError} = this.props
+        return (
             <div>
                 <input 
-                    {...this.props.inputAttr}
+                    {...inputAttr}
                     onChange={this.onInputChange}
                 />
-                {(this.state.visibleError && this.props.textError) && <p>{this.props.textError}</p>}
+                {(this.state.isVisibleError && textError) && <p>{textError}</p>}
             </div>
-        );
-    };
-};
+        )
+    }
+}
 
-export default CurriculumFormInput;
+export default CurriculumFormInput

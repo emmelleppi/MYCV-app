@@ -3,20 +3,20 @@ import { connect } from 'react-redux'
 import CurriculumForm from './CurriculumForm'
 import { editCurriculum, removeCurriculum } from '../actions/curricula'
 
-const EditCurriculumPage = (props) => {
+function EditCurriculumPage ({curriculum, dispatch, history}) {
   return (
     <div>
-      <h1>Edit curriculum with id: {props.curriculum.id}</h1>
+      <h1>Edit curriculum with id: {curriculum.id}</h1>
       <CurriculumForm
-        curriculum={props.curriculum}
+        curriculum={curriculum}
         onSubmit={(curriculum) => {
-          props.dispatch(editCurriculum(props.curriculum.id, curriculum))
-          props.history.push('/')
+          dispatch(editCurriculum(curriculum.id, curriculum))
+          history.push('/')
         }}
       />
       <button className='button button--secondary' onClick={() => {
-        props.dispatch(removeCurriculum({ id: props.curriculum.id }))
-        props.history.push('/')
+        dispatch(removeCurriculum({ id: curriculum.id }))
+        history.push('/')
       }
       } >Remove</button>
     </div>

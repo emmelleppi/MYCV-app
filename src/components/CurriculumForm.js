@@ -1,15 +1,15 @@
-import React from 'react';
-import moment from 'moment';
-import { ReactDatez, ReduxReactDatez } from 'react-datez';
-import { toTitleCase, isPhoneNumber, isEmail } from '../utils/stringUtils';
-import CurriculumFormInput from './CurriculumFormInput';
-import 'react-dates/lib/css/_datepicker.css';
-import 'react-datez/dist/css/react-datez.css';
+import React from 'react'
+import moment from 'moment'
+import { ReactDatez, ReduxReactDatez } from 'react-datez'
+import { toTitleCase, isPhoneNumber, isEmail } from '../utils/stringUtils'
+import CurriculumFormInput from './CurriculumFormInput'
+import 'react-dates/lib/css/_datepicker.css'
+import 'react-datez/dist/css/react-datez.css'
 
 
 class CurriculumForm extends React.Component {
     constructor(props){
-        super(props);
+        super(props)
         this.state = {
             name: props.curriculum ? props.curriculum.name : '',
             surname: props.curriculum ? props.curriculum.surname : '',
@@ -24,77 +24,88 @@ class CurriculumForm extends React.Component {
             firstEmail: props.curriculum ? props.curriculum.firstEmail : '',
             secondEmail: props.curriculum ? props.curriculum.secondEmail : '',
             error: ''
-        };
+        }
     }
     
     onNameChange = (e) => {
-        const name = e.target.value;
-        this.setState(() => ({ name }));
-        return name.length>0 ? false : true;
-    };
+        const name = e.target.value
+        this.setState(() => ({ name }))
+        return name.length>0 ? false : true
+    }
+
     onSurnameChange = (e) => {
-        const surname =  e.target.value;
-        this.setState(() => ({ surname }));
-        return surname.length>0 ? false : true;
-    };
+        const surname =  e.target.value
+        this.setState(() => ({ surname }))
+        return surname.length>0 ? false : true
+    }
+
     onBirthDateChange = (birthDate) => {
         if(birthDate){
-            this.setState(() => ({ birthDate }));
+            this.setState(() => ({ birthDate }))
         }
-    };
+    }
+
     onCityChange = (e) => {
-        const city = e.target.value;
-        this.setState(() => ({ city }));
-    };
+        const city = e.target.value
+        this.setState(() => ({ city }))
+    }
+
     onProvinceChange = (e) => {
-        const province = e.target.value;
-        this.setState(() => ({ province }));
-    };
+        const province = e.target.value
+        this.setState(() => ({ province }))
+    }
+
     onCountryChange = (e) => {
-        const country = e.target.value;
-        this.setState(() => ({ country }));        
-    };
+        const country = e.target.value
+        this.setState(() => ({ country }))        
+    }
+
     onStreetChange = (e) => {
-        const street = e.target.value;
-        this.setState(() => ({ street }));
-    };
+        const street = e.target.value
+        this.setState(() => ({ street }))
+    }
+
     onStreetNumberChange = (e) => {
-        const streetNumber = e.target.value;
-        this.setState(() => ({ streetNumber }));
-    };
+        const streetNumber = e.target.value
+        this.setState(() => ({ streetNumber }))
+    }
+
     onCellphoneNumberChange = (e) => {
-        const cellphoneNumber = e.target.value;
-        this.setState(() => ({ cellphoneNumber }));
-        return cellphoneNumber && !isPhoneNumber(cellphoneNumber);
-    };
+        const cellphoneNumber = e.target.value
+        this.setState(() => ({ cellphoneNumber }))
+        return cellphoneNumber && !isPhoneNumber(cellphoneNumber)
+    }
+
     onLandlinePhoneChange = (e) => {
-        const landlinePhone = e.target.value;
-        this.setState(() => ({ landlinePhone }));
-        return landlinePhone && !isPhoneNumber(landlinePhone);
-    };
+        const landlinePhone = e.target.value
+        this.setState(() => ({ landlinePhone }))
+        return landlinePhone && !isPhoneNumber(landlinePhone)
+    }
+
     onFirstEmailChange = (e) => {
-        const firstEmail = e.target.value;
-        this.setState(() => ({ firstEmail }));
-        return firstEmail && !isEmail(firstEmail);
-    };
+        const firstEmail = e.target.value
+        this.setState(() => ({ firstEmail }))
+        return firstEmail && !isEmail(firstEmail)
+    }
+
     onSecondEmailChange = (e) => {
-        const secondEmail = e.target.value;
-        this.setState(() => ({ secondEmail }));
-        return secondEmail && !isEmail(secondEmail);    
-    };
+        const secondEmail = e.target.value
+        this.setState(() => ({ secondEmail }))
+        return secondEmail && !isEmail(secondEmail)    
+    }
 
     onSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault()
         if(!this.state.name || !this.state.surname){
-            this.setState(() => ({ error: 'Please provide the required filelds' }));
+            this.setState(() => ({ error: 'Please provide the required filelds' }))
         }else if(!isPhoneNumber(this.state.cellphoneNumber) ||
-                    !isPhoneNumber(this.state.landlinePhone)||
-                    !isEmail(this.state.firstEmail)||
-                    !isEmail(this.state.secondEmail)
+            !isPhoneNumber(this.state.landlinePhone)||
+            !isEmail(this.state.firstEmail)||
+            !isEmail(this.state.secondEmail)
         ){
-            this.setState(() => ({ error: 'Some field is not valid' }));
+            this.setState(() => ({ error: 'Some field is not valid' }))
         }else{
-            this.setState(() => ({ error:'' }));
+            this.setState(() => ({ error:'' }))
             this.props.onSubmit({
                 name: toTitleCase(this.state.name),
                 surname: toTitleCase(this.state.surname),
@@ -108,9 +119,9 @@ class CurriculumForm extends React.Component {
                 landlinePhone: this.state.landlinePhone,
                 firstEmail: this.state.firstEmail,
                 secondEmail: this.state.secondEmail
-            });
+            })
         }
-    };
+    }
     render(){
         return (
             <div>
@@ -246,7 +257,7 @@ class CurriculumForm extends React.Component {
                     <button className="button button--action">Add curriculum</button>
                 </form>
             </div>
-        );
+        )
     }
 }
 

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const HelpPage = () => (
-  <div>
+function HelpPage () {
+  return (
+    <div>
     Pagina di help (TODO)
-  </div>
-)
+    </div>
+  )
+}
 
 export default HelpPage
