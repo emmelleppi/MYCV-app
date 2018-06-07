@@ -7,52 +7,52 @@ import 'react-datez/dist/css/react-datez.css'
 
 class CurriculumListFilters extends React.Component {
 
-  onInputChange = (e, key) => {
+  onInputChange = (key, e) => {
     const value = e.target.value
-    if (!!value) {
-      switch (key) {
-        case 'name':
-          this.props.dispatch(setNameFilter(value))
-          break;
-        case 'surname':
-          this.props.dispatch(setSurameFilter(value))
-          break;
-      }
+    switch (key) {
+      case 'name':
+        this.props.dispatch(setNameFilter(value))
+        break;
+      case 'surname':
+        this.props.dispatch(setSurnameFilter(value))
+        break;
     }
   }
 
-  onDateChange = (date, key) => {
-    if (!!date) {
-      switch (key) {
-        case 'startBirthDate':
-          this.props.dispatch(setStartBirthDate(date))
-          break;
-        case 'endBirthDate':
-          this.props.dispatch(setEndBirthDate(date))
-          break;
-      }
+  onDateChange = (key, date) => {
+    switch (key) {
+      case 'startBirthDate':
+        this.props.dispatch(setStartBirthDate(date))
+        break;
+      case 'endBirthDate':
+        this.props.dispatch(setEndBirthDate(date))
+        break;
     }
   }
 
   onSortChange = (e) => {
     const selectValue = e.target.value
-    if (!!selectValue) {
-      switch (selectValue) {
-        case 'name':
-          this.props.dispatch(sortByName())
-          break;
-        case 'surname':
-          this.props.dispatch(sortBySurname())
-          break;
-        case 'birthDate':
-          this.props.dispatch(sortByBirthDate())
-          break;
-      }
+    switch (selectValue) {
+      case 'name':
+        this.props.dispatch(sortByName())
+        break;
+      case 'surname':
+        this.props.dispatch(sortBySurname())
+        break;
+      case 'birthDate':
+        this.props.dispatch(sortByBirthDate())
+        break;
     }
   }
 
   render() {
-    const { name, surname, startBirthDate, endBirthDate, sortBy } = this.props.filters
+    const {
+      name,
+      surname,
+      startBirthDate,
+      endBirthDate,
+      sortBy
+    } = this.props.filters
 
     return (
       <div className="content-container">
@@ -65,7 +65,8 @@ class CurriculumListFilters extends React.Component {
                 type: 'text',
                 value: name
               }}
-              onInputChange={(e) => { this.onInputChange(e, 'name') }} />
+              onInputChange={this.onInputChange.bind(this, 'name')}
+            />
           </div>
           <div className="input-group__item">
             <CurriculumFormInput
@@ -75,7 +76,7 @@ class CurriculumListFilters extends React.Component {
                 type: 'text',
                 value: surname
               }}
-              onInputChange={(e) => { this.onInputChange(e, 'surname') }} />
+              onInputChange={this.onInputChange.bind(this, 'surname')}
             />
           </div>
         </div>
@@ -84,7 +85,7 @@ class CurriculumListFilters extends React.Component {
             <ReactDatez
               allowPast={true}
               value={startBirthDate}
-              handleChange={(date) => { this.onDateChange(date, 'startBirthDate') }}
+              handleChange={this.onDateChange.bind(this, 'startBirthDate')}
               dateFormat="DD/MM/YYYY"
               placeholder="Birth date start"
             />
@@ -93,7 +94,7 @@ class CurriculumListFilters extends React.Component {
             <ReactDatez
               allowPast={true}
               value={endBirthDate}
-              handleChange={(date) => { this.onDateChange(date, 'endBirthDate') }}
+              handleChange={this.onDateChange.bind(this, 'endBirthDate')}
               dateFormat="DD/MM/YYYY"
               placeholder="Birth date end"
             />
