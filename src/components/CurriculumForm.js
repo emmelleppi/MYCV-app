@@ -25,27 +25,28 @@ class CurriculumForm extends React.Component {
 
   state = this.props.curriculum ? { defaultState, ...this.props.curriculum } : defaultState
 
-  onStateChange = (e, key) => {
+  onStateChange = (key, e) => {
     const value = e.target.value
     this.setState(() => ({ [key]: value }))
     return value
   }
 
-  onInputChange = (e, key) => {
-    this.onStateChange(e, key)
+  onInputChange = (key, e) => {
+    const value = this.onStateChange(key, e)
+    return !value.length>0
   }
 
-  onPhoneChange = (e, key) => {
-    const phone = this.onStateChange(e, key)
+  onPhoneChange = (key, e) => {
+    const phone = this.onStateChange(key, e)
     return phone && !isPhoneNumber(phone)
   }
 
-  onEmailChange = (e, key) => {
-    const email = this.onStateChange(e, key)
+  onEmailChange = (key, e) => {
+    const email = this.onStateChange(key, e)
     return email && !isEmail(email)
   }
 
-  onDateChange = (date, key) => {
+  onDateChange = (key, date) => {
     if (date) {
       this.setState(() => ({ [key]: date }))
     }
@@ -126,7 +127,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: name
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'name') }}
+              onInputChange={this.onInputChange.bind(this, 'name')}
               textError="The name is required"
             />
             <CurriculumFormInput
@@ -136,7 +137,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: surname
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'surname') }}
+              onInputChange={this.onInputChange.bind(this, 'surname')}
               textError="The surname is required"
             />
           </div>
@@ -144,7 +145,7 @@ class CurriculumForm extends React.Component {
             <ReactDatez
               allowPast={true}
               value={moment(birthDate).format()}
-              handleChange={(date) => { return this.onDateChange(date, 'birthDate') }}
+              handleChange={this.onDateChange.bind(this, 'birthDate')}
               dateFormat="DD/MM/YYYY"
               placeholder="Birth date"
             />
@@ -157,7 +158,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: city
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'city') }}
+              onInputChange={this.onInputChange.bind(this, 'city')}
             />
             <CurriculumFormInput
               inputAttr={{
@@ -167,7 +168,7 @@ class CurriculumForm extends React.Component {
                 value: province,
                 maxLength: 2
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'province') }}
+              onInputChange={this.onInputChange.bind(this, 'province')}
             />
           </div>
           <div className="form__pairs" >
@@ -178,7 +179,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: country
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'country') }}
+              onInputChange={this.onInputChange.bind(this, 'country')}
             />
           </div>
           <div className="form__pairs" >
@@ -189,7 +190,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: street
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'street') }}
+              onInputChange={this.onInputChange.bind(this, 'street')}
             />
             <CurriculumFormInput
               inputAttr={{
@@ -198,7 +199,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: streetNumber
               }}
-              onInputChange={(e) => { return this.onInputChange(e, 'streetNumber') }}
+              onInputChange={this.onInputChange.bind(this, 'streetNumber')}
             />
           </div>
           <div className="form__pairs" >
@@ -209,7 +210,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: cellphoneNumber
               }}
-              onInputChange={(e) => { return this.onPhoneChange(e, 'cellphoneNumber') }}
+              onInputChange={this.onPhoneChange.bind(this, 'cellphoneNumber')}
               textError="The phone number is not valid"
             />
             <CurriculumFormInput
@@ -219,7 +220,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: landlinePhone
               }}
-              onInputChange={(e) => { return this.onPhoneChange(e, 'landlinePhone') }}
+              onInputChange={this.onPhoneChange.bind(this, 'landlinePhone')}
               textError="The phone number is not valid"
             />
           </div>
@@ -231,7 +232,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: firstEmail
               }}
-              onInputChange={(e) => { return this.onEmailChange(e, 'firstEmail') }}
+              onInputChange={this.onEmailChange.bind(this, 'firstEmail')}
               textError="The email is not valid"
             />
             <CurriculumFormInput
@@ -241,7 +242,7 @@ class CurriculumForm extends React.Component {
                 className: 'text-input',
                 value: secondEmail
               }}
-              onInputChange={(e) => { return this.onEmailChange(e, 'secondEmail') }}
+              onInputChange={this.onEmailChange.bind(this, 'secondEmail')}
               textError="The email is not valid"
             />
           </div>
