@@ -3,7 +3,7 @@ import React from 'react'
 function HelpPage () {
   return (
     <div>
-    Pagina di help (TODO)
+      <h2>Pagina di help (TODO)</h2>
     </div>
   )
 }

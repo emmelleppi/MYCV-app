@@ -35,8 +35,8 @@
 
 .list-item--create {
   @extend .list-item--message;
-  text-decoration: none;
   font-weight: bold;
+  text-decoration: none;
   &:hover {
     color: $off-white;
   }

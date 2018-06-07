@@ -1,10 +1,9 @@
 .text-input {
   border: 1px solid #cacccd;
-  height: 30px;
   background: $off-white;
   color: $off-black;
-  font-size: $m-size;
-  font-weight: 300;
+  font: 300 $m-size;
+  height: 30px;
   padding: $s-size;
 }
 

@@ -6,7 +6,7 @@ import { editCurriculum, removeCurriculum } from '../actions/curricula'
 function EditCurriculumPage ({curriculum, dispatch, history}) {
   return (
     <div>
-      <h1>Edit curriculum with id: {curriculum.id}</h1>
+      <h1>{`Edit curriculum with id: ${curriculum.id}`}</h1>
       <CurriculumForm
         curriculum={curriculum}
         onSubmit={(curriculum) => {

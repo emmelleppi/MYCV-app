@@ -15,9 +15,9 @@
 
 .header__title {
   font-size: $l-size;
-  text-decoration: none;
-  text-align: center;
   margin: 0;
+  text-align: center;
+  text-decoration: none;
   @media (min-width: $desktop-breakpoint) {
     text-align: left;
   }
@@ -25,8 +25,7 @@
 
 .header__elements {
   color: $off-white;
-  font-weight: 500;
-  font-size: $m-size;
+  font: 500 $m-size;
   margin: 0;
 }
 
@@ -35,8 +34,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: $s-size 0;
   margin-top: $m-size;
+  padding: $s-size 0;
   @media (min-width: $desktop-breakpoint) {
     flex-direction: row;
   }

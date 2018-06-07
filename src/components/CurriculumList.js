@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import CurriculumListItem from './CurriculumListItem'
 import selectCurricula from '../selectors/curricula'
 
-function CurriculumList ({curricula}) {
+function CurriculumList ({ curricula }) {
   return (
     <div className='content'>
       <div className='list-header'>
@@ -16,7 +16,7 @@ function CurriculumList ({curricula}) {
             return <CurriculumListItem key={curriculum.id} {...curriculum} />
           })
           : <div className='list-item list-item--message'>
-                No curriculum available, <Link className='list-item--create' to='/create'>create one.</Link>
+            <b>No curriculum available,<Link className='list-item--create' to='/create'>create one.</Link></b>
           </div>
       }
     </div>

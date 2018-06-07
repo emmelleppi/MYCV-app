@@ -16,18 +16,18 @@
 }
 
 .form__pairs .text-input{
-  margin-right: $s-size;
-  margin-bottom: $m-size;
+  margin: 0  $s-size $m-size 0;
   @media (min-width: $desktop-breakpoint) {
-    margin-bottom: 0;
+    margin: 0  $s-size $m-size 0;
   }
 }
+
 .form__pairs .rdatez .text-input{
   margin-right: 0;
 }
 
 .form__error {
-  margin: 0 0 $m-size 0;
   font-style: italic;
+  margin: 0 0 $m-size 0;
 }
 

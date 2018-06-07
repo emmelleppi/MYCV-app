@@ -21,10 +21,12 @@ function CurriculumListItem (curriculum) {
 
   return (
     <div>
-      <Link to={'/edit/' + id} >
-        <h3>{name} {surname}</h3>
-      </Link>
-      <p>{moment(birthDate).format('Do MMMM YYYY')}</p>
+      <h3>
+        <Link to={'/edit/' + id} >
+          {`${name} ${surname}`}
+        </Link>
+      </h3>
+      <h3>{moment(birthDate).format('Do MMMM YYYY')}</h3>
     </div>
   )
 }
