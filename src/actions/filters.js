@@ -1,5 +1,5 @@
 // SET_NAME_FILTER
-export function setNameFilter (name = '') {
+export function setNameFilter(name = '') {
   return {
     type: 'SET_NAME_FILTER',
     name
@@ -7,7 +7,7 @@ export function setNameFilter (name = '') {
 }
 
 // SET_SURNAME_FILTER
-export function setSurnameFilter (surname = '') {
+export function setSurnameFilter(surname = '') {
   return {
     type: 'SET_SURNAME_FILTER',
     surname
@@ -15,28 +15,28 @@ export function setSurnameFilter (surname = '') {
 }
 
 // SORT_BY_NAME
-export function sortByName () {
+export function sortByName() {
   return {
     type: 'SORT_BY_NAME'
   }
 }
 
 // SORT_BY_SURNAME
-export function sortBySurname () {
+export function sortBySurname() {
   return {
     type: 'SORT_BY_SURNAME'
   }
 }
 
 // SORT_BY_BIRTHDATE
-export function sortByBirthDate () {
+export function sortByBirthDate() {
   return {
     type: 'SORT_BY_BIRTHDATE'
   }
 }
 
 // SET_START_BIRTHDATE
-export function setStartBirthDate (startBirthDate) {
+export function setStartBirthDate(startBirthDate) {
   return {
     type: 'SET_START_BIRTHDATE',
     startBirthDate
@@ -44,7 +44,7 @@ export function setStartBirthDate (startBirthDate) {
 }
 
 // SET_END_BIRTHDATE
-export function setEndBirthDate (endBirthDate) {
+export function setEndBirthDate(endBirthDate) {
   return {
     type: 'SET_END_BIRTHDATE',
     endBirthDate

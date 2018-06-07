@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import CurriculumListItem from './CurriculumListItem'
 import selectCurricula from '../selectors/curricula'
 
-function CurriculumList ({ curricula }) {
+function CurriculumList({ curricula }) {
   return (
     <div className='content'>
       <div className='list-header'>
@@ -23,7 +23,7 @@ function CurriculumList ({ curricula }) {
   )
 }
 
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
     curricula: selectCurricula(state.curricula, state.filters)
   }

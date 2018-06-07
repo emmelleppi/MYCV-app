@@ -1,8 +1,8 @@
-import {createStore, combineReducers} from 'redux'
+import { createStore, combineReducers } from 'redux'
 import curriculaReducer from '../reducers/curricula'
 import filtersReducer from '../reducers/filters'
 
-export default function configureStore () {
+export default function configureStore() {
   const store = createStore(combineReducers({
     curricula: curriculaReducer,
     filters: filtersReducer

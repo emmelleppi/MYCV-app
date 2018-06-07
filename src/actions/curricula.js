@@ -2,7 +2,7 @@ import uuid from 'uuid'
 import moment from 'moment'
 
 // ADD_CURRICULUM
-export function addCurriculum (
+export function addCurriculum(
   {
     name = '',
     surname = '',
@@ -38,7 +38,7 @@ export function addCurriculum (
 }
 
 // REMOVE_CURRICULUM
-export function removeCurriculum ({ id } = {}) {
+export function removeCurriculum({ id } = {}) {
   return {
     type: 'REMOVE_CURRICULUM',
     id
@@ -46,7 +46,7 @@ export function removeCurriculum ({ id } = {}) {
 }
 
 // EDIT_CURRICULUM
-export function editCurriculum (id, update) {
+export function editCurriculum(id, update) {
   return {
     type: 'EDIT_CURRICULUM',
     id,

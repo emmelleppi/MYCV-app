@@ -6,7 +6,7 @@ const filtersReducerDefaultState = {
   endBirthDate: ''
 }
 
-export default function filtersReducer (state = filtersReducerDefaultState, action) {
+export default function filtersReducer(state = filtersReducerDefaultState, action) {
   switch (action.type) {
     case 'SET_NAME_FILTER':
       return {

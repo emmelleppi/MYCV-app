@@ -2,7 +2,7 @@ import React from 'react'
 import CurriculumList from './CurriculumList'
 import CurriculumListFilters from './CurriculumListFilters'
 
-function CurriculaDashboardPage () {
+function CurriculaDashboardPage() {
   return (
     <div>
       <CurriculumListFilters />

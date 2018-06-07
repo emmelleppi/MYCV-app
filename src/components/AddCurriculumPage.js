@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import CurriculumForm from './CurriculumForm'
 import { addCurriculum } from '../actions/curricula'
 
-function AddCurriculumPage ({dispatch, history}) {
+function AddCurriculumPage({ dispatch, history }) {
   return (
     <div>
       <div className='header-container'>
