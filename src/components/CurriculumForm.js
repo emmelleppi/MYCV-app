@@ -1,131 +1,122 @@
 import React from 'react'
 import moment from 'moment'
-import { ReactDatez, ReduxReactDatez } from 'react-datez'
+import { ReactDatez } from 'react-datez'
 import { toTitleCase, isPhoneNumber, isEmail } from '../utils/stringUtils'
 import CurriculumFormInput from './CurriculumFormInput'
 import 'react-datez/dist/css/react-datez.css'
 
+const defaultState = {
+  name: '',
+  surname: '',
+  birthDate: moment(),
+  city: '',
+  province: '',
+  country: '',
+  street: '',
+  streetNumber: '',
+  cellphoneNumber: '',
+  landlinePhone: '',
+  firstEmail: '',
+  secondEmail: '',
+  error: ''
+}
 
 class CurriculumForm extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: props.curriculum ? props.curriculum.name : '',
-      surname: props.curriculum ? props.curriculum.surname : '',
-      birthDate: props.curriculum ? moment(props.curriculum.birthDate).format() : moment().format(),
-      city: props.curriculum ? props.curriculum.city : '',
-      province: props.curriculum ? props.curriculum.province : '',
-      country: props.curriculum ? props.curriculum.country : '',
-      street: props.curriculum ? props.curriculum.street : '',
-      streetNumber: props.curriculum ? props.curriculum.streetNumber : '',
-      cellphoneNumber: props.curriculum ? props.curriculum.cellphoneNumber : '',
-      landlinePhone: props.curriculum ? props.curriculum.landlinePhone : '',
-      firstEmail: props.curriculum ? props.curriculum.firstEmail : '',
-      secondEmail: props.curriculum ? props.curriculum.secondEmail : '',
-      error: ''
+
+  state = this.props.curriculum ? { defaultState, ...this.props.curriculum } : defaultState
+
+  onStateChange = (e, key) => {
+    const value = e.target.value
+    this.setState(() => ({ [key]: value }))
+    return value
+  }
+
+  onInputChange = (e, key) => {
+    this.onStateChange(e, key)
+  }
+
+  onPhoneChange = (e, key) => {
+    const phone = this.onStateChange(e, key)
+    return phone && !isPhoneNumber(phone)
+  }
+
+  onEmailChange = (e, key) => {
+    const email = this.onStateChange(e, key)
+    return email && !isEmail(email)
+  }
+
+  onDateChange = (date, key) => {
+    if (date) {
+      this.setState(() => ({ [key]: date }))
     }
-  }
-
-  onNameChange = (e) => {
-    const name = e.target.value
-    this.setState(() => ({ name }))
-    return name.length > 0 ? false : true
-  }
-
-  onSurnameChange = (e) => {
-    const surname = e.target.value
-    this.setState(() => ({ surname }))
-    return surname.length > 0 ? false : true
-  }
-
-  onBirthDateChange = (birthDate) => {
-    if (birthDate) {
-      this.setState(() => ({ birthDate }))
-    }
-  }
-
-  onCityChange = (e) => {
-    const city = e.target.value
-    this.setState(() => ({ city }))
-  }
-
-  onProvinceChange = (e) => {
-    const province = e.target.value
-    this.setState(() => ({ province }))
-  }
-
-  onCountryChange = (e) => {
-    const country = e.target.value
-    this.setState(() => ({ country }))
-  }
-
-  onStreetChange = (e) => {
-    const street = e.target.value
-    this.setState(() => ({ street }))
-  }
-
-  onStreetNumberChange = (e) => {
-    const streetNumber = e.target.value
-    this.setState(() => ({ streetNumber }))
-  }
-
-  onCellphoneNumberChange = (e) => {
-    const cellphoneNumber = e.target.value
-    this.setState(() => ({ cellphoneNumber }))
-    return cellphoneNumber && !isPhoneNumber(cellphoneNumber)
-  }
-
-  onLandlinePhoneChange = (e) => {
-    const landlinePhone = e.target.value
-    this.setState(() => ({ landlinePhone }))
-    return landlinePhone && !isPhoneNumber(landlinePhone)
-  }
-
-  onFirstEmailChange = (e) => {
-    const firstEmail = e.target.value
-    this.setState(() => ({ firstEmail }))
-    return firstEmail && !isEmail(firstEmail)
-  }
-
-  onSecondEmailChange = (e) => {
-    const secondEmail = e.target.value
-    this.setState(() => ({ secondEmail }))
-    return secondEmail && !isEmail(secondEmail)
   }
 
   onSubmit = (e) => {
     e.preventDefault()
-    if (!this.state.name || !this.state.surname) {
+
+    const {
+      name,
+      surname,
+      birthDate,
+      city,
+      province,
+      country,
+      street,
+      streetNumber,
+      cellphoneNumber,
+      landlinePhone,
+      firstEmail,
+      secondEmail,
+      error
+    } = this.state
+
+    if (!name || !surname) {
       this.setState(() => ({ error: 'Please provide the required filelds' }))
-    } else if (!isPhoneNumber(this.state.cellphoneNumber) ||
-      !isPhoneNumber(this.state.landlinePhone) ||
-      !isEmail(this.state.firstEmail) ||
-      !isEmail(this.state.secondEmail)
+    } else if (!isPhoneNumber(cellphoneNumber) ||
+      !isPhoneNumber(landlinePhone) ||
+      !isEmail(firstEmail) ||
+      !isEmail(secondEmail)
     ) {
       this.setState(() => ({ error: 'Some field is not valid' }))
     } else {
       this.setState(() => ({ error: '' }))
       this.props.onSubmit({
-        name: toTitleCase(this.state.name),
-        surname: toTitleCase(this.state.surname),
-        birthDate: this.state.birthDate.valueOf(),
-        city: toTitleCase(this.state.city),
-        province: this.state.province.toUpperCase(),
-        country: toTitleCase(this.state.country),
-        street: toTitleCase(this.state.street),
-        streetNumber: this.state.streetNumber,
-        cellphoneNumber: this.state.cellphoneNumber,
-        landlinePhone: this.state.landlinePhone,
-        firstEmail: this.state.firstEmail,
-        secondEmail: this.state.secondEmail
+        name: toTitleCase(name),
+        surname: toTitleCase(surname),
+        birthDate: moment(birthDate).format().valueOf(),
+        city: toTitleCase(city),
+        province: province.toUpperCase(),
+        country: toTitleCase(country),
+        street: toTitleCase(street),
+        streetNumber: streetNumber,
+        cellphoneNumber: cellphoneNumber,
+        landlinePhone: landlinePhone,
+        firstEmail: firstEmail,
+        secondEmail: secondEmail
       })
     }
   }
 
   render() {
+    const {
+      name,
+      surname,
+      birthDate,
+      city,
+      province,
+      country,
+      street,
+      streetNumber,
+      cellphoneNumber,
+      landlinePhone,
+      firstEmail,
+      secondEmail,
+      error
+    } = this.state
+
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
+        {error && <p>{error}</p>}
         <form onSubmit={this.onSubmit} className="form">
           <div className="form__pairs" >
             <CurriculumFormInput
@@ -133,9 +124,9 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Name',
                 className: 'text-input',
-                value: this.state.name
+                value: name
               }}
-              onInputChange={this.onNameChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'name') }}
               textError="The name is required"
             />
             <CurriculumFormInput
@@ -143,17 +134,17 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Surname',
                 className: 'text-input',
-                value: this.state.surname
+                value: surname
               }}
-              onInputChange={this.onSurnameChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'surname') }}
               textError="The surname is required"
             />
           </div>
           <div className="form__pairs" >
             <ReactDatez
               allowPast={true}
-              value={this.state.birthDate}
-              handleChange={this.onBirthDateChange}
+              value={moment(birthDate).format()}
+              handleChange={(date) => { return this.onDateChange(date, 'birthDate') }}
               dateFormat="DD/MM/YYYY"
               placeholder="Birth date"
             />
@@ -164,19 +155,19 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'City',
                 className: 'text-input',
-                value: this.state.city
+                value: city
               }}
-              onInputChange={this.onCityChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'city') }}
             />
             <CurriculumFormInput
               inputAttr={{
                 type: 'text',
                 placeholder: 'Province',
                 className: 'text-input',
-                value: this.state.province,
+                value: province,
                 maxLength: 2
               }}
-              onInputChange={this.onProvinceChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'province') }}
             />
           </div>
           <div className="form__pairs" >
@@ -185,9 +176,9 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Country',
                 className: 'text-input',
-                value: this.state.country
+                value: country
               }}
-              onInputChange={this.onCountryChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'country') }}
             />
           </div>
           <div className="form__pairs" >
@@ -196,18 +187,18 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Street',
                 className: 'text-input',
-                value: this.state.street
+                value: street
               }}
-              onInputChange={this.onStreetChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'street') }}
             />
             <CurriculumFormInput
               inputAttr={{
                 type: 'text',
                 placeholder: 'Street number',
                 className: 'text-input',
-                value: this.state.streetNumber
+                value: streetNumber
               }}
-              onInputChange={this.onStreetNumberChange}
+              onInputChange={(e) => { return this.onInputChange(e, 'streetNumber') }}
             />
           </div>
           <div className="form__pairs" >
@@ -216,9 +207,9 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Cellphone number',
                 className: 'text-input',
-                value: this.state.cellphoneNumber
+                value: cellphoneNumber
               }}
-              onInputChange={this.onCellphoneNumberChange}
+              onInputChange={(e) => { return this.onPhoneChange(e, 'cellphoneNumber') }}
               textError="The phone number is not valid"
             />
             <CurriculumFormInput
@@ -226,9 +217,9 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Landline phone',
                 className: 'text-input',
-                value: this.state.landlinePhone
+                value: landlinePhone
               }}
-              onInputChange={this.onLandlinePhoneChange}
+              onInputChange={(e) => { return this.onPhoneChange(e, 'landlinePhone') }}
               textError="The phone number is not valid"
             />
           </div>
@@ -238,9 +229,9 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'First email',
                 className: 'text-input',
-                value: this.state.firstEmail
+                value: firstEmail
               }}
-              onInputChange={this.onFirstEmailChange}
+              onInputChange={(e) => { return this.onEmailChange(e, 'firstEmail') }}
               textError="The email is not valid"
             />
             <CurriculumFormInput
@@ -248,9 +239,9 @@ class CurriculumForm extends React.Component {
                 type: 'text',
                 placeholder: 'Second email',
                 className: 'text-input',
-                value: this.state.secondEmail
+                value: secondEmail
               }}
-              onInputChange={this.onSecondEmailChange}
+              onInputChange={(e) => { return this.onEmailChange(e, 'secondEmail') }}
               textError="The email is not valid"
             />
           </div>
