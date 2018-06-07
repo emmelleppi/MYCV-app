@@ -3,7 +3,6 @@ import moment from 'moment'
 import { ReactDatez, ReduxReactDatez } from 'react-datez'
 import { toTitleCase, isPhoneNumber, isEmail } from '../utils/stringUtils'
 import CurriculumFormInput from './CurriculumFormInput'
-import 'react-dates/lib/css/_datepicker.css'
 import 'react-datez/dist/css/react-datez.css'
 
 

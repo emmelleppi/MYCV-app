@@ -6,12 +6,12 @@ import { addCurriculum } from '../actions/curricula'
 function AddCurriculumPage ({dispatch, history}) {
   return (
     <div>
-      <div className='header-container'>
-        <div className='container'>
-          <h1 className='header__title'>New curriculum</h1>
+      <div className="header-container">
+        <div className="container">
+          <h1 className="header__title">New curriculum</h1>
         </div>
       </div>
-      <div className='container'>
+      <div className="container">
         <CurriculumForm
           onSubmit={(curriculum) => {
             dispatch(addCurriculum(curriculum))
