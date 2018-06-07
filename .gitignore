@@ -1,6 +1,17 @@
+### Node template
+# Logs
+logs
+*.log
+
+# Dependency directory
+# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git-
 node_modules/
+
+# Production
 public/bundle.js
 public/bundle.js.map
 public/style.css
 public/style.css.map
+
+# Misc
 .vscode
