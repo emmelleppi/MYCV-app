@@ -6,16 +6,53 @@ import { ReactDatez, ReduxReactDatez } from 'react-datez'
 import 'react-datez/dist/css/react-datez.css'
 
 class CurriculumListFilters extends React.Component {
-  onStartBirthDateChange = (startDate) => {
-    this.props.dispatch(setStartBirthDate(startDate))
+
+  onInputChange = (e, key) => {
+    const value = e.target.value
+    if (!!value) {
+      switch (key) {
+        case 'name':
+          this.props.dispatch(setNameFilter(value))
+          break;
+        case 'surname':
+          this.props.dispatch(setSurameFilter(value))
+          break;
+      }
+    }
   }
 
-  onEndBirthDateChange = (endDate) => {
-    this.props.dispatch(setEndBirthDate(endDate))
+  onDateChange = (date, key) => {
+    if (!!date) {
+      switch (key) {
+        case 'startBirthDate':
+          this.props.dispatch(setStartBirthDate(date))
+          break;
+        case 'endBirthDate':
+          this.props.dispatch(setEndBirthDate(date))
+          break;
+      }
+    }
+  }
+
+  onSortChange = (e) => {
+    const selectValue = e.target.value
+    if (!!selectValue) {
+      switch (selectValue) {
+        case 'name':
+          this.props.dispatch(sortByName())
+          break;
+        case 'surname':
+          this.props.dispatch(sortBySurname())
+          break;
+        case 'birthDate':
+          this.props.dispatch(sortByBirthDate())
+          break;
+      }
+    }
   }
 
   render() {
-    const { filters, dispatch } = this.props
+    const { name, surname, startBirthDate, endBirthDate, sortBy } = this.props.filters
 
     return (
       <div className="content-container">
@@ -26,11 +63,9 @@ class CurriculumListFilters extends React.Component {
                 placeholder: 'Name',
                 className: 'text-input',
                 type: 'text',
-                value: filters.name
+                value: name
               }}
-              onInputChange={(e) => {
-                dispatch(setNameFilter(e.target.value))
-              }} />
+              onInputChange={(e) => { this.onInputChange(e, 'name') }} />
           </div>
           <div className="input-group__item">
             <CurriculumFormInput
@@ -38,11 +73,9 @@ class CurriculumListFilters extends React.Component {
                 placeholder: 'Surname',
                 className: 'text-input',
                 type: 'text',
-                value: filters.surname
+                value: surname
               }}
-              onInputChange={(e) => {
-                dispatch(setSurnameFilter(e.target.value))
-              }}
+              onInputChange={(e) => { this.onInputChange(e, 'surname') }} />
             />
           </div>
         </div>
@@ -50,8 +83,8 @@ class CurriculumListFilters extends React.Component {
           <div className="input-group__item">
             <ReactDatez
               allowPast={true}
-              value={filters.startBirthDate}
-              handleChange={this.onStartBirthDateChange}
+              value={startBirthDate}
+              handleChange={(date) => { this.onDateChange(date, 'startBirthDate') }}
               dateFormat="DD/MM/YYYY"
               placeholder="Birth date start"
             />
@@ -59,8 +92,8 @@ class CurriculumListFilters extends React.Component {
           <div className="input-group__item">
             <ReactDatez
               allowPast={true}
-              value={filters.endBirthDate}
-              handleChange={this.onEndBirthDateChange}
+              value={endBirthDate}
+              handleChange={(date) => { this.onDateChange(date, 'endBirthDate') }}
               dateFormat="DD/MM/YYYY"
               placeholder="Birth date end"
             />
@@ -71,16 +104,8 @@ class CurriculumListFilters extends React.Component {
             <label>Sort curricula by</label>
             <select
               className="select"
-              value={filters.sortBy}
-              onChange={(e) => {
-                if (e.target.value === 'name') {
-                  dispatch(sortByName())
-                } else if (e.target.value === 'surname') {
-                  dispatch(sortBySurname())
-                } else if (e.target.value === 'birthDate') {
-                  dispatch(sortByBirthDate())
-                }
-              }}
+              value={sortBy}
+              onChange={this.onSortChange}
             >
               <option value="name" >Name</option>
               <option value="surname" >Surname</option>
