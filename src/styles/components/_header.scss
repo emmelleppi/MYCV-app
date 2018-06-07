@@ -1,3 +1,4 @@
+// Tachyons: bg-near-black near-white mb3 pv3 mb5-m
 .header {
   background: $off-black;
   color: $off-white;
@@ -8,11 +9,13 @@
   }
 }
 
+// Tachyons: bg-transparent
 .header-container {
   @extend .header;
   background: none;
 }
 
+// Tachyons: f2 m0 tc no-underline tl-m
 .header__title {
   font-size: $l-size;
   margin: 0;
@@ -23,12 +26,14 @@
   }
 }
 
+// Tachyons: near-white fw5 f3 m0
 .header__elements {
   color: $off-white;
   font: 500 $m-size;
   margin: 0;
 }
 
+// Tachyons: items-center flex flex-column justify-between mt3 pv2 flex-row-m 
 .header__actions {
   align-items: center;
   display: flex;

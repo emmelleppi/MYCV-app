@@ -1,3 +1,4 @@
+// Tachyons: flex flex-column mb3 flex-row-m mb4-m
 .input-group {
   display: flex;
   flex-direction: column;
@@ -8,6 +9,7 @@
   }
 }
 
+// Tachyons: tc tl-m
 .input-group--filters{
   @extend .input-group;
   text-align: center;
@@ -16,6 +18,7 @@
   }
 }
 
+// Tachyons: mb2 mb0-m mr2-m
 .input-group__item {
   margin-bottom: $s-size;
   @media (min-width: $desktop-breakpoint) {

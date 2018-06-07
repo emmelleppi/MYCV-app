@@ -1,3 +1,4 @@
+// Tachyons: near-white tc tl-m
 .list-header {
   color: $off-white;
   text-align: center;
@@ -6,6 +7,7 @@
   }
 }
 
+// Tachyons: near-black flex flex-column pa2 no-underline bg-near-white:hover items-center-m flex-row-m justify-between-m pa3-m
 .list-item {
   color: $off-black;
   display: flex;
@@ -23,6 +25,7 @@
   }
 }
 
+// Tachyons: items-center near-black justify-center pa2 bg-trasparent:hover
 .list-item--message {
   align-items: center;
   color: $off-black;
@@ -33,6 +36,7 @@
   }
 }
 
+// Tachyons: b no-underline near-white:hover
 .list-item--create {
   @extend .list-item--message;
   font-weight: bold;

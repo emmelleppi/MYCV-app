@@ -1,5 +1,6 @@
+// Tachyons: bw1 b--solid b--near-white bg-near-white near-black fw3 f3 h3 pa2
 .text-input {
-  border: 1px solid #cacccd;
+  border: 1px solid $off-white;
   background: $off-white;
   color: $off-black;
   font: 300 $m-size;
@@ -7,11 +8,13 @@
   padding: $s-size;
 }
 
+// Tachyons: bw1 b--solid b--near-white bg-near-white near-black cursor-pointer fw3 f3 h3 pa2
 .rdatez > input {
   @extend .text-input;
   cursor: pointer;
 }
 
+// Tachyons: ml2
 .select {
   @extend .text-input;
   margin-left: $s-size;

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { setNameFilter, setSurnameFilter, sortByName, sortBySurname, sortByBirthDate, setStartBirthDate, setEndBirthDate } from '../actions/filters'
+import CurriculumFormInput from './CurriculumFormInput'
 import { ReactDatez, ReduxReactDatez } from 'react-datez'
 import 'react-datez/dist/css/react-datez.css'
 
@@ -20,22 +21,29 @@ class CurriculumListFilters extends React.Component {
       <div className="content-container">
         <div className="input-group--filters">
           <div className="input-group__item">
-            <input
-              placeholder="Name"
-              className="text-input"
-              type="text" value={filters.name}
-              onChange={(e) => {
+            <CurriculumFormInput
+              inputAttr={{
+                placeholder: 'Name',
+                className: 'text-input',
+                type: 'text',
+                value: filters.name
+              }}
+              onInputChange={(e) => {
                 dispatch(setNameFilter(e.target.value))
               }} />
           </div>
           <div className="input-group__item">
-            <input
-              placeholder="Surname"
-              className="text-input"
-              type="text"
-              value={filters.surname} onChange={(e) => {
+            <CurriculumFormInput
+              inputAttr={{
+                placeholder: 'Surname',
+                className: 'text-input',
+                type: 'text',
+                value: filters.surname
+              }}
+              onInputChange={(e) => {
                 dispatch(setSurnameFilter(e.target.value))
-              }} />
+              }}
+            />
           </div>
         </div>
         <div className="input-group--filters">
