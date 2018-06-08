@@ -1,23 +1,35 @@
 import moment from 'moment'
 
-export default function selectCurricula(curricula, { name, surname, sortBy, startBirthDate, endBirthDate }) {
-  return curricula.filter((curriculum) => {
-    const birthDate = moment(curriculum.birthDate)
-    const startBirthDateMoment = startBirthDate && moment(startBirthDate)
-    const endBirthDateMoment = endBirthDate && moment(endBirthDate)
-    const startBirthDateMatch = startBirthDateMoment ? startBirthDateMoment.isSameOrBefore(birthDate, 'day') : true
-    const endBirthDateMatch = endBirthDateMoment ? endBirthDateMoment.isSameOrAfter(birthDate, 'day') : true
-    const nameMatch = curriculum.name.toLowerCase().includes(name.toLowerCase())
-    const surnameMatch = curriculum.surname.toLowerCase().includes(surname.toLowerCase())
+function isSameDateOrAfter(dateToCheck, referenceDate) {
+  const dateToCheckMoment = moment(dateToCheck)
+  const referenceDateMoment = moment(referenceDate)
+  return dateToCheckMoment.isSameOrAfter(referenceDateMoment, 'day')
+}
 
-    return startBirthDateMatch && endBirthDateMatch && nameMatch && surnameMatch
-  }).sort((a, b) => {
-    if (sortBy === 'birthDate') {
-      return a.birthDate < b.birthDate ? 1 : -1
-    } else if (sortBy === 'name') {
-      return a.name.toUpperCase() > b.name.toUpperCase() ? 1 : -1
-    } else if (sortBy === 'surname') {
-      return a.surname.toUpperCase() > b.surname.toUpperCase() ? 1 : -1
-    }
+function isSameDateOrBefore(dateToCheck, referenceDate) {
+  const dateToCheckMoment = moment(dateToCheck)
+  const referenceDateMoment = moment(referenceDate)
+  return dateToCheckMoment.isSameOrBefore(referenceDateMoment, 'day')
+}
+
+function isIncludedCaseInsensitive(strToSearch, strThatIncludes) {
+  return strThatIncludes.toLowerCase().includes(strToSearch.toLowerCase())
+}
+
+function isCurriculumValid(curriculum, { name, surname, sortBy, startBirthDate, endBirthDate }) {
+  let predicate = true
+  predicate &= (endBirthDate && curriculum.birthDate) ? isSameDateOrAfter(endBirthDate, curriculum.birthDate) : true
+  predicate &= (startBirthDate && curriculum.birthDate) ? isSameDateOrBefore(startBirthDate, curriculum.birthDate) : true
+  predicate &= isIncludedCaseInsensitive(name, curriculum.name)
+  predicate &= isIncludedCaseInsensitive(surname, curriculum.surname)
+  return predicate
+}
+
+export default function selectCurricula(curricula, filters) {
+  const sortBy = require('lodash/sortby')
+  const filteredCurricula = curricula.filter((curriculum) => {
+    return isCurriculumValid(curriculum, filters)
   })
+  const sortedCurricula = sortBy(filteredCurricula, filters.sortBy)
+  return sortedCurricula
 }
