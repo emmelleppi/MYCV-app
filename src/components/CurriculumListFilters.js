@@ -5,6 +5,8 @@ import CurriculumFormInput from './CurriculumFormInput'
 import { ReactDatez, ReduxReactDatez } from 'react-datez'
 import 'react-datez/dist/css/react-datez.css'
 
+const DAY_MONTH_YEAR = 'DD/MM/YYYY'
+
 class CurriculumListFilters extends React.Component {
 
   onInputChange = (key, e) => {
@@ -86,7 +88,7 @@ class CurriculumListFilters extends React.Component {
               allowPast={true}
               value={startBirthDate}
               handleChange={this.onDateChange.bind(this, 'startBirthDate')}
-              dateFormat="DD/MM/YYYY"
+              dateFormat={DAY_MONTH_YEAR}
               placeholder="Birth date start"
             />
           </div>
@@ -95,7 +97,7 @@ class CurriculumListFilters extends React.Component {
               allowPast={true}
               value={endBirthDate}
               handleChange={this.onDateChange.bind(this, 'endBirthDate')}
-              dateFormat="DD/MM/YYYY"
+              dateFormat={DAY_MONTH_YEAR}
               placeholder="Birth date end"
             />
           </div>

@@ -3,7 +3,8 @@ import { connect } from 'react-redux'
 import CurriculumForm from './CurriculumForm'
 import { addCurriculum } from '../actions/curricula'
 
-function AddCurriculumPage({ dispatch, history }) {
+function AddCurriculumPage(props) {
+
   return (
     <div>
       <div className='header-container'>
@@ -14,8 +15,8 @@ function AddCurriculumPage({ dispatch, history }) {
       <div className='container'>
         <CurriculumForm
           onSubmit={(curriculum) => {
-            dispatch(addCurriculum(curriculum))
-            history.push('/')
+            props.dispatch(addCurriculum(curriculum))
+            props.history.push('/')
           }}
         />
       </div>

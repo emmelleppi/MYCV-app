@@ -9,7 +9,6 @@ export default function curriculaReducer(state = curriculaReducerDefaultState, a
     case 'EDIT_CURRICULUM':
       return state.map((curriculum) => {
         if (curriculum.id === action.id) {
-          console.log({ ...curriculum, ...action.update })
           return {
             ...curriculum,
             ...action.update

@@ -1,15 +1,17 @@
 import moment from 'moment'
 
+const DAY = 'day'
+
 function isSameDateOrAfter(dateToCheck, referenceDate) {
   const dateToCheckMoment = moment(dateToCheck)
   const referenceDateMoment = moment(referenceDate)
-  return dateToCheckMoment.isSameOrAfter(referenceDateMoment, 'day')
+  return dateToCheckMoment.isSameOrAfter(referenceDateMoment, DAY)
 }
 
 function isSameDateOrBefore(dateToCheck, referenceDate) {
   const dateToCheckMoment = moment(dateToCheck)
   const referenceDateMoment = moment(referenceDate)
-  return dateToCheckMoment.isSameOrBefore(referenceDateMoment, 'day')
+  return dateToCheckMoment.isSameOrBefore(referenceDateMoment, DAY)
 }
 
 function isIncludedCaseInsensitive(strToSearch, strThatIncludes) {

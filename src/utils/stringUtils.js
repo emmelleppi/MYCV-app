@@ -1,13 +1,15 @@
 import emailValidator from 'validator/lib/isEmail';
 import phoneValidator from 'validator/lib/isMobilePhone';
 
+const PHONE_LOCALE_IT = 'it-IT'
+
 export function toTitleCase(title) {
   const startCase = require('lodash/startcase')
   return startCase(title)
 }
 
 export function isPhoneNumber(number) {
-  return !number || phoneValidator(number, 'it-IT')
+  return !number || phoneValidator(number, PHONE_LOCALE_IT)
 }
 
 export function isEmail(email) {

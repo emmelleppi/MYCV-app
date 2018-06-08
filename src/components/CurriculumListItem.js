@@ -2,7 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import moment from 'moment'
 
-function CurriculumListItem(curriculum) {
+const DATE_TH_MONTH_EXTENDED_YEAR_EXTENDED = 'Do MMMM YYYY'
+
+function CurriculumListItem(props) {
   const {
     id,
     name,
@@ -17,7 +19,7 @@ function CurriculumListItem(curriculum) {
     landlinePhone,
     firstEmail,
     secondEmail
-  } = curriculum
+  } = props
 
   return (
     <div>
@@ -26,7 +28,7 @@ function CurriculumListItem(curriculum) {
           {`${name} ${surname}`}
         </Link>
       </h3>
-      <h3>{moment(birthDate).format('Do MMMM YYYY')}</h3>
+      <h3>{moment(birthDate).format(DATE_TH_MONTH_EXTENDED_YEAR_EXTENDED)}</h3>
     </div>
   )
 }

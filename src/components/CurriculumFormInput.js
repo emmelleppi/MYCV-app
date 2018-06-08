@@ -11,14 +11,18 @@ class CurriculumFormInput extends React.Component {
   }
 
   render() {
-    const { inputAttr, textError } = this.props
+    const {
+      props: { inputAttr, textError },
+      state: { isVisibleError }
+    } = this
+
     return (
       <div>
         <input
           {...inputAttr}
           onChange={this.onInputChange}
         />
-        {(this.state.isVisibleError && textError) && <label>{textError}</label>}
+        {(isVisibleError && textError) && <label>{textError}</label>}
       </div>
     )
   }

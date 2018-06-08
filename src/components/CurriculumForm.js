@@ -5,6 +5,14 @@ import { toTitleCase, isPhoneNumber, isEmail } from '../utils/stringUtils'
 import CurriculumFormInput from './CurriculumFormInput'
 import 'react-datez/dist/css/react-datez.css'
 
+const ERROR_REQUIRED_FIELD = 'Please provide the required filelds'
+const ERROR_NOT_VALID_FIELD = 'Some field is not valid'
+const ERROR_NAME_REQUIRED = 'The name is required'
+const ERROR_SURNAME_REQUIRED = 'The surname is required'
+const ERROR_PHONE_NOT_VALID = 'The phone number is not valid'
+const ERROR_EMAIL_NOT_VALID = 'The email is not valid'
+const DATE_MONTH_YEAR = 'DD/MM/YYYY'
+
 const defaultState = {
   name: '',
   surname: '',
@@ -33,7 +41,7 @@ class CurriculumForm extends React.Component {
 
   onInputChange = (key, e) => {
     const value = this.onStateChange(key, e)
-    return !value.length>0
+    return !value.length > 0
   }
 
   onPhoneChange = (key, e) => {
@@ -50,6 +58,12 @@ class CurriculumForm extends React.Component {
     if (date) {
       this.setState(() => ({ [key]: date }))
     }
+  }
+
+  isStateValueValid(inputs, optFunct) {
+    return inputs.reduce((a, b) => {
+      return a || (optFunct ? !optFunct(b) : !b)
+    }, false)
   }
 
   onSubmit = (e) => {
@@ -71,14 +85,12 @@ class CurriculumForm extends React.Component {
       error
     } = this.state
 
-    if (!name || !surname) {
-      this.setState(() => ({ error: 'Please provide the required filelds' }))
-    } else if (!isPhoneNumber(cellphoneNumber) ||
-      !isPhoneNumber(landlinePhone) ||
-      !isEmail(firstEmail) ||
-      !isEmail(secondEmail)
+    if (this.isStateValueValid([name, surname])) {
+      this.setState(() => ({ error: ERROR_REQUIRED_FIELD }))
+    } else if (this.isStateValueValid([cellphoneNumber, landlinePhone], isPhoneNumber)
+      || this.isStateValueValid([firstEmail, secondEmail], isEmail)
     ) {
-      this.setState(() => ({ error: 'Some field is not valid' }))
+      this.setState(() => ({ error: ERROR_NOT_VALID_FIELD }))
     } else {
       this.setState(() => ({ error: '' }))
       this.props.onSubmit({
@@ -128,7 +140,7 @@ class CurriculumForm extends React.Component {
                 value: name
               }}
               onInputChange={this.onInputChange.bind(this, 'name')}
-              textError="The name is required"
+              textError={ERROR_NAME_REQUIRED}
             />
             <CurriculumFormInput
               inputAttr={{
@@ -138,7 +150,7 @@ class CurriculumForm extends React.Component {
                 value: surname
               }}
               onInputChange={this.onInputChange.bind(this, 'surname')}
-              textError="The surname is required"
+              textError={ERROR_SURNAME_REQUIRED}
             />
           </div>
           <div className="form__pairs" >
@@ -146,7 +158,7 @@ class CurriculumForm extends React.Component {
               allowPast={true}
               value={moment(birthDate).format()}
               handleChange={this.onDateChange.bind(this, 'birthDate')}
-              dateFormat="DD/MM/YYYY"
+              dateFormat={DATE_MONTH_YEAR}
               placeholder="Birth date"
             />
           </div>
@@ -211,7 +223,7 @@ class CurriculumForm extends React.Component {
                 value: cellphoneNumber
               }}
               onInputChange={this.onPhoneChange.bind(this, 'cellphoneNumber')}
-              textError="The phone number is not valid"
+              textError={ERROR_PHONE_NOT_VALID}
             />
             <CurriculumFormInput
               inputAttr={{
@@ -221,7 +233,7 @@ class CurriculumForm extends React.Component {
                 value: landlinePhone
               }}
               onInputChange={this.onPhoneChange.bind(this, 'landlinePhone')}
-              textError="The phone number is not valid"
+              textError={ERROR_PHONE_NOT_VALID}
             />
           </div>
           <div className="form__pairs" >
@@ -233,7 +245,7 @@ class CurriculumForm extends React.Component {
                 value: firstEmail
               }}
               onInputChange={this.onEmailChange.bind(this, 'firstEmail')}
-              textError="The email is not valid"
+              textError={ERROR_EMAIL_NOT_VALID}
             />
             <CurriculumFormInput
               inputAttr={{
@@ -243,7 +255,7 @@ class CurriculumForm extends React.Component {
                 value: secondEmail
               }}
               onInputChange={this.onEmailChange.bind(this, 'secondEmail')}
-              textError="The email is not valid"
+              textError={ERROR_EMAIL_NOT_VALID}
             />
           </div>
           <button className="button button--action">Add curriculum</button>
