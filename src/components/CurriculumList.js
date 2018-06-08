@@ -4,6 +4,20 @@ import { Link } from 'react-router-dom'
 import CurriculumListItem from './CurriculumListItem'
 import selectCurricula from '../selectors/curricula'
 
+function getCurriculumListItem(curricula) {
+  return curricula.map((curriculum) => {
+    return <CurriculumListItem key={curriculum.id} {...curriculum} />
+  })
+}
+
+function getNoCurriculumAlert() {
+  return (
+    <div className='list-item list-item--message'>
+      <b>No curriculum available,<Link className='list-item--create' to='/create'>create one.</Link></b>
+    </div>
+  )
+}
+
 function CurriculumList(props) {
   const { curricula } = props
 
@@ -13,14 +27,7 @@ function CurriculumList(props) {
         <h1>Curriculum List</h1>
       </div>
       {
-        curricula.length > 0 ?
-          curricula.map((curriculum) => {
-            return <CurriculumListItem key={curriculum.id} {...curriculum} />
-          })
-          :
-          <div className='list-item list-item--message'>
-            <b>No curriculum available,<Link className='list-item--create' to='/create'>create one.</Link></b>
-          </div>
+        curricula.length > 0 ? getCurriculumListItem(curricula) : getNoCurriculumAlert()
       }
     </div>
   )

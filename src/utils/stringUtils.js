@@ -1,5 +1,5 @@
-import emailValidator from 'validator/lib/isEmail';
-import phoneValidator from 'validator/lib/isMobilePhone';
+import emailValidator from 'validator/lib/isEmail'
+import phoneValidator from 'validator/lib/isMobilePhone'
 
 const PHONE_LOCALE_IT = 'it-IT'
 

@@ -4,7 +4,6 @@ import CurriculumForm from './CurriculumForm'
 import { addCurriculum } from '../actions/curricula'
 
 function AddCurriculumPage(props) {
-
   return (
     <div>
       <div className='header-container'>
