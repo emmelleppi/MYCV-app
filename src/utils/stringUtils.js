@@ -7,9 +7,9 @@ export function toTitleCase(title) {
 }
 
 export function isPhoneNumber(number) {
-    return phoneValidator(number,'it-IT')
+  return !number || phoneValidator(number, 'it-IT')
 }
 
 export function isEmail(email) {
-  return emailValidator(email)
+  return !email || emailValidator(email)
 }
